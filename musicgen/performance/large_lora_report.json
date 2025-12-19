@@ -1,0 +1,235 @@
+{
+  "model_comparison": "Pretrained LARGE vs Trained LARGE LoRA",
+  "summary": {
+    "pretrained_avg_bpm_error": 1.8149993896484375,
+    "trained_avg_bpm_error": 6.42764892578125,
+    "pretrained_key_accuracy": 60.0,
+    "trained_key_accuracy": 85.0,
+    "pretrained_avg_style": 79.28759385358259,
+    "trained_avg_style": 90.96333580387149,
+    "pretrained_wins": 19,
+    "trained_wins": 29
+  },
+  "test_results": [
+    {
+      "test_id": 1,
+      "prompt": "Big Bag Calling, Dark Trap style, 141 BPM, in G#-.",
+      "expected_bpm": 141.0,
+      "expected_key": "G# minor",
+      "expected_style": "Dark Trap",
+      "pretrained_bpm": 140.90933227539062,
+      "pretrained_key": "Ab major",
+      "trained_bpm": 140.90005493164062,
+      "trained_key": "Ab major"
+    },
+    {
+      "test_id": 2,
+      "prompt": "Lights Stay Flashin, Dark Trap style, 153 BPM, in F-.",
+      "expected_bpm": 153.0,
+      "expected_key": "F minor",
+      "expected_style": "Dark Trap",
+      "pretrained_bpm": 140.49163818359375,
+      "pretrained_key": "F# major",
+      "trained_bpm": 153.41635131835938,
+      "trained_key": "F major"
+    },
+    {
+      "test_id": 3,
+      "prompt": "Fire Love, AfroBeatz style, 112 BPM, in E.",
+      "expected_bpm": 112.0,
+      "expected_key": "E major",
+      "expected_style": "AfroBeatz",
+      "pretrained_bpm": 112.92328643798828,
+      "pretrained_key": "E major",
+      "trained_bpm": 111.3909912109375,
+      "trained_key": "E minor"
+    },
+    {
+      "test_id": 4,
+      "prompt": "Unity Love, AfroBeatz style, 108 BPM, in D#-.",
+      "expected_bpm": 108.0,
+      "expected_key": "D# minor",
+      "expected_style": "AfroBeatz",
+      "pretrained_bpm": 108.62879180908203,
+      "pretrained_key": "Eb minor",
+      "trained_bpm": 108.85919952392578,
+      "trained_key": "Eb major"
+    },
+    {
+      "test_id": 5,
+      "prompt": "Late Night Hustle, Dark Trap style, 148 BPM, in B-.",
+      "expected_bpm": 148.0,
+      "expected_key": "B minor",
+      "expected_style": "Dark Trap",
+      "pretrained_bpm": 148.01292419433594,
+      "pretrained_key": "B major",
+      "trained_bpm": 147.92373657226562,
+      "trained_key": "B major"
+    },
+    {
+      "test_id": 6,
+      "prompt": "Trap King Life, Rowezart style, 145 BPM, in D-.",
+      "expected_bpm": 145.0,
+      "expected_key": "D minor",
+      "expected_style": "Rowezart",
+      "pretrained_bpm": 143.55470275878906,
+      "pretrained_key": "F minor",
+      "trained_bpm": 146.17079162597656,
+      "trained_key": "D major"
+    },
+    {
+      "test_id": 7,
+      "prompt": "Do Time, Dark Trap style, 160 BPM, in Bb-.",
+      "expected_bpm": 160.0,
+      "expected_key": "Bb minor",
+      "expected_style": "Dark Trap",
+      "pretrained_bpm": 161.49903869628906,
+      "pretrained_key": "Bb minor",
+      "trained_bpm": 159.8551788330078,
+      "trained_key": "F major"
+    },
+    {
+      "test_id": 8,
+      "prompt": "Keep Chasin Dreams, Dark Trap style, 151 BPM, in B-.",
+      "expected_bpm": 151.0,
+      "expected_key": "B minor",
+      "expected_style": "Dark Trap",
+      "pretrained_bpm": 149.81195068359375,
+      "pretrained_key": "B minor",
+      "trained_bpm": 121.61607360839844,
+      "trained_key": "B major"
+    },
+    {
+      "test_id": 9,
+      "prompt": "Real Hustlers Shine, Drill style, 154 BPM, in G-.",
+      "expected_bpm": 154.0,
+      "expected_key": "G minor",
+      "expected_style": "Drill",
+      "pretrained_bpm": 153.62474060058594,
+      "pretrained_key": "G major",
+      "trained_bpm": 153.35379028320312,
+      "trained_key": "E minor"
+    },
+    {
+      "test_id": 10,
+      "prompt": "Big Chains Swingin, Drill style, 158 BPM, in Bb-.",
+      "expected_bpm": 158.0,
+      "expected_key": "Bb minor",
+      "expected_style": "Drill",
+      "pretrained_bpm": 158.12034606933594,
+      "pretrained_key": "Bb minor",
+      "trained_bpm": 158.42152404785156,
+      "trained_key": "Bb minor"
+    },
+    {
+      "test_id": 11,
+      "prompt": "Always Stay Ready, Beast On Beatz style, 141 BPM, in A-.",
+      "expected_bpm": 141.0,
+      "expected_key": "A minor",
+      "expected_style": "Beast On Beatz",
+      "pretrained_bpm": 140.90003967285156,
+      "pretrained_key": "C minor",
+      "trained_bpm": 138.6807403564453,
+      "trained_key": "A major"
+    },
+    {
+      "test_id": 12,
+      "prompt": "All Lights Glow, Dark Trap style, 165 BPM, in E-.",
+      "expected_bpm": 165.0,
+      "expected_key": "E minor",
+      "expected_style": "Dark Trap",
+      "pretrained_bpm": 166.05746459960938,
+      "pretrained_key": "C major",
+      "trained_bpm": 164.74473571777344,
+      "trained_key": "E minor"
+    },
+    {
+      "test_id": 13,
+      "prompt": "Ice Cold Anthem, Dark Trap style, 137 BPM, in G-.",
+      "expected_bpm": 137.0,
+      "expected_key": "G minor",
+      "expected_style": "Dark Trap",
+      "pretrained_bpm": 136.3054962158203,
+      "pretrained_key": "G minor",
+      "trained_bpm": 136.02816772460938,
+      "trained_key": "G major"
+    },
+    {
+      "test_id": 14,
+      "prompt": "Oluwa Take Control, AfroBeatz style, 121 BPM, in Ab.",
+      "expected_bpm": 121.0,
+      "expected_key": "Ab major",
+      "expected_style": "AfroBeatz",
+      "pretrained_bpm": 111.96646118164062,
+      "pretrained_key": "Ab major",
+      "trained_bpm": 111.74959564208984,
+      "trained_key": "Ab minor"
+    },
+    {
+      "test_id": 15,
+      "prompt": "Risk It All, Rowezart style, 145 BPM, in D#-.",
+      "expected_bpm": 145.0,
+      "expected_key": "D# minor",
+      "expected_style": "Rowezart",
+      "pretrained_bpm": 145.09278869628906,
+      "pretrained_key": "B minor",
+      "trained_bpm": 108.2683334350586,
+      "trained_key": "F# major"
+    },
+    {
+      "test_id": 16,
+      "prompt": "Drip Dreams Shine, Drill style, 165 BPM, in A-.",
+      "expected_bpm": 165.0,
+      "expected_key": "A minor",
+      "expected_style": "Drill",
+      "pretrained_bpm": 164.96292114257812,
+      "pretrained_key": "F minor",
+      "trained_bpm": 162.83009338378906,
+      "trained_key": "A minor"
+    },
+    {
+      "test_id": 17,
+      "prompt": "Big Dreams Movin, Dark Trap style, 135 BPM, in D#-.",
+      "expected_bpm": 135.0,
+      "expected_key": "D# minor",
+      "expected_style": "Dark Trap",
+      "pretrained_bpm": 136.014892578125,
+      "pretrained_key": "F# major",
+      "trained_bpm": 134.25559997558594,
+      "trained_key": "Eb major"
+    },
+    {
+      "test_id": 18,
+      "prompt": "Flip It Quick, Rowezart style, 142 BPM, in A-.",
+      "expected_bpm": 142.0,
+      "expected_key": "A minor",
+      "expected_style": "Rowezart",
+      "pretrained_bpm": 143.20196533203125,
+      "pretrained_key": "A major",
+      "trained_bpm": 140.25827026367188,
+      "trained_key": "A major"
+    },
+    {
+      "test_id": 19,
+      "prompt": "Always on Fire, Dark Trap style, 151 BPM, in C#-.",
+      "expected_bpm": 151.0,
+      "expected_key": "C# minor",
+      "expected_style": "Dark Trap",
+      "pretrained_bpm": 149.30709838867188,
+      "pretrained_key": "F# major",
+      "trained_bpm": 111.43216705322266,
+      "trained_key": "C# major"
+    },
+    {
+      "test_id": 20,
+      "prompt": "Drip Dont Stop, Drill style, 161 BPM, in C-.",
+      "expected_bpm": 161.0,
+      "expected_key": "C minor",
+      "expected_style": "Drill",
+      "pretrained_bpm": 163.58287048339844,
+      "pretrained_key": "C major",
+      "trained_bpm": 161.97264099121094,
+      "trained_key": "C major"
+    }
+  ]
+}

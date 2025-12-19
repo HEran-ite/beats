@@ -1,0 +1,14 @@
+# @package __global__
+
+# Dataset configuration for full beats dataset (1,172 training samples)
+datasource:
+  max_sample_rate: 48000
+  max_channels: 2
+
+  train: egs/beats_full_complete/train
+  valid: egs/beats_full_complete/valid
+  evaluate: egs/beats_full_complete/evaluate
+  generate: egs/beats_full_complete/generate
+
+
+

@@ -1,0 +1,14 @@
+# @package __global__
+
+# Dataset configuration for custom beats dataset
+datasource:
+  max_sample_rate: 48000
+  max_channels: 2
+  
+  train: egs/beats/train
+  valid: egs/beats/valid
+  evaluate: egs/beats/evaluate
+  generate: egs/beats/generate
+
+
+

@@ -1,0 +1,197 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beat HQ POC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Animated background orbs -->
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    
+    <!-- Music decorations on background -->
+    <div class="music-decoration music-note">♪</div>
+    <div class="music-decoration music-note">♫</div>
+    <div class="music-decoration music-note">♬</div>
+    <div class="music-decoration music-note">♩</div>
+    <div class="music-decoration music-note">♪</div>
+    <div class="music-decoration music-note">♫</div>
+    <div class="music-decoration music-note">♬</div>
+    <div class="music-decoration music-note">♩</div>
+    <div class="music-decoration music-note">♪</div>
+    <div class="music-decoration music-note">♫</div>
+    <div class="music-decoration music-note">♬</div>
+    <div class="music-decoration music-note">♩</div>
+    <div class="music-decoration music-note">♪</div>
+    <div class="music-decoration music-note">♫</div>
+    <div class="music-decoration music-note">♬</div>
+    <div class="music-decoration music-note">♩</div>
+    <div class="music-decoration music-note">♪</div>
+    <div class="music-decoration music-note">♫</div>
+    <div class="music-decoration music-note">♬</div>
+    <div class="music-decoration music-note">♩</div>
+    <div class="music-decoration music-note">♪</div>
+    <div class="music-decoration sound-wave sound-wave-1"></div>
+    <div class="music-decoration sound-wave sound-wave-2"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🎵 Beat HQ POC</h1>
+            <p>Purpose: Generate new beats with AI</p>
+        </div>
+
+        <div id="status" class="status">
+            <div class="status-message"></div>
+        </div>
+        
+        <div id="audioPlayerContainer" class="audio-player-container">
+            <div class="audio-player-header">
+                <div class="audio-player-title">🎵 Your Generated Beat</div>
+                <button class="audio-player-close" onclick="closeAudioPlayer()" title="Close">×</button>
+            </div>
+            <div class="audio-player">
+                <audio id="audioPlayer" controls preload="auto" crossorigin="anonymous" style="pointer-events: auto !important;">
+                    <source id="audioSource" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <form id="musicForm" style="position: relative; z-index: 1;">
+            <div class="mode-toggle-wrapper">
+                <div class="mode-toggle">
+                    <button type="button" class="mode-btn active" onclick="switchMode('basic', event)">Basic mode</button>
+                    <button type="button" class="mode-btn" onclick="switchMode('advanced', event)">Advanced mode</button>
+                </div>
+            </div>
+
+            <!-- New Basic Mode (formerly Composition Mode) -->
+            <div class="mode-content-wrapper">
+                <div id="basic-mode">
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h2>Global Settings</h2>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="globalTempo">Global Tempo (BPM)</label>
+                                <input type="number" id="globalTempo" class="form-input" placeholder="120" min="50" max="250" value="120">
+                            </div>
+                            <div class="form-group">
+                                <label for="globalKey">Global Key</label>
+                                <input type="text" id="globalKey" class="form-input" placeholder="C major" value="C major">
+                            </div>
+                            <div class="form-group">
+                                <label for="globalStyle">Global Style</label>
+                                <select id="globalStyle" class="form-select">
+                                    <option value="trap" selected>Trap</option>
+                                    <option value="hip-hop">Hip Hop</option>
+                                    <option value="drill">Drill</option>
+                                    <option value="electronic">Electronic</option>
+                                    <option value="rock">Rock</option>
+                                    <option value="jazz">Jazz</option>
+                                    <option value="reggae">Reggae</option>
+                                    <option value="r&b">R&B</option>
+                                    <option value="pop">Pop</option>
+                                    <option value="ambient">Ambient</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="globalPreset">Global Preset</label>
+                                <select id="globalPreset" class="form-select">
+                                    <option value="energetic" selected>Energetic</option>
+                                    <option value="chill">Chill</option>
+                                    <option value="aggressive">Aggressive</option>
+                                    <option value="melodic">Melodic</option>
+                                    <option value="atmospheric">Atmospheric</option>
+                                    <option value="minimal">Minimal</option>
+                                    <option value="epic">Epic</option>
+                                    <option value="dark">Dark</option>
+                                    <option value="uplifting">Uplifting</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="compositionModelSize">Model</label>
+                                <select id="compositionModelSize" class="form-select">
+                                    <option value="original" selected>Original Dataset Model</option>
+                                    <option value="synthetic">Synthetic Dataset Model</option>
+                                    <option value="looperman">Looperman (from scratch)</option>
+                                    <option value="looperman_from checkpoint">Looperman (from checkpoint)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="section-header" style="margin-bottom: 20px;">
+                            <h2>Sections</h2>
+                            <button type="button" class="btn-add-section" onclick="addSection()">+ Add Section</button>
+                        </div>
+                        <div id="sectionsContainer">
+                            <!-- Sections will be added here dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="sectionsResultsContainer" style="display: none;">
+                        <div class="section-header">
+                            <h2>Generated Sections</h2>
+                        </div>
+                        <div id="sectionsResults">
+                            <!-- Individual section audio players will appear here -->
+                        </div>
+                        <div id="combineSectionContainer" style="display: none; margin-top: 20px;">
+                            <button type="button" class="create-btn" id="combineSectionsBtn" onclick="combineSections()">
+                                🎵 COMBINE SECTIONS
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Mode (unchanged) -->
+                <div id="advanced-mode" class="advanced-options" style="display: none;">
+                    <div class="form-section full-width">
+                        <div class="section-header">
+                            <h2>Custom Prompt</h2>
+                        </div>
+                        <div class="form-group">
+                            <label for="customPrompt">Music Description</label>
+                            <textarea id="customPrompt" class="form-input" rows="4" placeholder="Create a luxury hip-hop beat at 95 BPM in the key of Eb minor. Instruments: grand piano, orchestral strings, deep sub bass, smooth drums. Mood: rich, elegant, powerful."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h2>Generation Settings</h2>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="duration">Duration (seconds)</label>
+                                <input type="number" id="duration" class="form-input" placeholder="15" min="5" max="300" value="15">
+                            </div>
+                            <!-- MusicGen: Custom Checkpoints -->
+                            <div class="form-group" id="modelSizeGroup">
+                                <label for="modelSize">Model</label>
+                                <select id="modelSize" class="form-select">
+                                    <option value="original" selected>Original Dataset Model</option>
+                                    <option value="synthetic">Synthetic Dataset Model</option>
+                                    <option value="looperman">Looperman (from scratch)</option>
+                                    <option value="looperman_from checkpoint">Looperman (from checkpoint)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="create-btn" id="createBtn">
+                🎵 CREATE BEAT
+            </button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

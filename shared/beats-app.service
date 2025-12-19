@@ -1,0 +1,16 @@
+[Unit]
+Description=Beat HQ POC Flask Application
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/beats/shared
+Environment="PATH=/home/ubuntu/beats/venv/bin:/usr/local/bin:/usr/bin:/bin"
+ExecStart=/home/ubuntu/beats/venv/bin/python3 /home/ubuntu/beats/shared/app.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+

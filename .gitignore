@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# Audio files (generated/downloaded)
+*.mp3
+*.wav
+downloaded_beats*/
+generated_music/
+looperman_audio/
+musicgen/outputs/
+musicgen/performance/looperman/
+musicgen/performance/looperman_500/
+musicgen/performance/synthetic/
+musicgen/training/test_outputs/
+musicgen/training/comparison_test/
+musicgen/training/chroma_cache/
+
+# Logs
+*.log
+*.log.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Checkpoints and model files
+*.ckpt
+*.pth
+*.pt
+*.safetensors
+musicgen/training/checkpoints_simple/
+
+# Environment variables
+.env
+.envrc
+
+# Claude settings
+.claude/
+
+# Temporary files
+*.tmp
+*.temp

@@ -1,0 +1,99 @@
+# @package __global__
+
+# Training configuration for MusicGen on beats dataset
+# Using small model (300M params) for faster training
+defaults:
+  - musicgen/default
+  - /model: lm/musicgen_lm
+  - override /model/lm/model_scale: small
+  - override /dset: audio/beats_full
+  - _self_
+
+# Use mixed precision training for efficiency
+autocast: true
+autocast_dtype: float16
+
+# Use pretrained EnCodec for 32kHz music
+compression_model_checkpoint: //pretrained/facebook/encodec_32khz
+transformer_lm:
+  n_q: 4
+  card: 2048
+
+# Text conditioning using T5
+conditioners:
+  description:
+    model: t5
+    t5:
+      name: t5-base
+      finetune: false  # Don't fine-tune T5
+
+# Audio settings
+channels: 1
+sample_rate: 32000
+
+# Deadlock detection
+deadlock:
+  use: true
+
+# Dataset configuration
+dataset:
+  batch_size: 2  # Reduced for stability
+  segment_duration: 10  # 10 second segments
+  sample_on_weight: false
+  sample_on_duration: false
+  num_workers: 0  # Disable multiprocessing to avoid caching issues
+  valid:
+    num_samples: 10  # Quick validation
+  evaluate:
+    batch_size: 2
+    num_samples: 10
+  generate:
+    num_samples: 5
+  
+# Disable strict field requirements to avoid metadata issues
+info_fields_required: false
+
+# Generation settings
+generate:
+  every: 999  # Disabled - ffmpeg not available
+  audio:
+    strategy: loudness
+  lm:
+    use_sampling: true
+    top_k: 250
+    top_p: 0.0
+    gen_duration: 10.0
+
+# Checkpointing
+checkpoint:
+  save_every: 5  # Save every 5 epochs
+  keep_last: 5    # Keep last 5 checkpoints
+  keep_every_states: null
+
+# Optimization
+optim:
+  epochs: 20  # Train for 20 epochs (reduced for larger dataset)
+  updates_per_epoch: 586  # Steps per epoch (1172 samples / batch_size 2)
+  optimizer: adamw
+  lr: 1e-4
+  adam:
+    betas: [0.9, 0.95]
+    weight_decay: 0.1
+    eps: 1e-8
+  ema:
+    use: true
+    decay: 0.99
+
+# Logging
+logging:
+  log_tensorboard: true
+  log_updates: 10  # Log every 10 steps
+
+# Learning rate schedule
+schedule:
+  lr_scheduler: cosine
+  cosine:
+    warmup: 500  # Warmup steps
+    lr_min_ratio: 0.0
+    cycle_length: 1.0
+

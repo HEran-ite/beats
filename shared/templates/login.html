@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beat HQ POC • Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Animated background orbs -->
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+
+    <!-- Music decorations on background (reuse same DOM order for CSS nth-child) -->
+    <div class="music-decoration music-note">♪</div>
+    <div class="music-decoration music-note">♫</div>
+    <div class="music-decoration music-note">♬</div>
+    <div class="music-decoration music-note">♩</div>
+    <div class="music-decoration music-note">♪</div>
+    <div class="music-decoration music-note">♫</div>
+    <div class="music-decoration music-note">♬</div>
+    <div class="music-decoration music-note">♩</div>
+    <div class="music-decoration music-note">♪</div>
+    <div class="music-decoration music-note">♫</div>
+    <div class="music-decoration music-note">♬</div>
+    <div class="music-decoration music-note">♩</div>
+    <div class="music-decoration music-note">♪</div>
+    <div class="music-decoration music-note">♫</div>
+    <div class="music-decoration music-note">♬</div>
+    <div class="music-decoration music-note">♩</div>
+    <div class="music-decoration music-note">♪</div>
+    <div class="music-decoration sound-wave sound-wave-1"></div>
+    <div class="music-decoration sound-wave sound-wave-2"></div>
+
+    <div class="container" style="max-width: 520px;">
+        <div class="header">
+            <h1>🎵 Beat HQ POC</h1>
+            <p>Enter password to continue</p>
+        </div>
+
+        {% if error %}
+        <div id="status" class="status error" style="display:block;">
+            <div class="status-message">❌ {{ error }}</div>
+        </div>
+        {% endif %}
+
+        <form method="POST" action="{{ login_action }}{% if next_url %}?next={{ next_url | urlencode }}{% endif %}" style="position: relative; z-index: 1;">
+            <input type="hidden" name="next" value="{{ next_url }}">
+            <div class="form-section" style="margin-top: 16px;">
+                <div class="section-header">
+                    <h2>Login</h2>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" class="form-input" autocomplete="current-password" required autofocus>
+                </div>
+                <button type="submit" class="create-btn">🔒 UNLOCK</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
